@@ -32,6 +32,26 @@ export default function ArticleDetail() {
             <div>내용:{article.content}</div>
             <button onClick={modifyClick}>수정</button>
             <button>삭제</button>
+            {clicked ? <ArticleModifyForm fetchArticle={fetchArticle}/> : null}
         </>
+    )
+}
+
+function ArticleModifyForm({fetchArticle}) {
+
+
+    return (
+        <>
+            <form>
+                <div>제목
+                    <input type="text"></input>
+                </div>
+                <div>내용
+                    <input type="text"></input>
+                </div>
+                <button>수정하기</button>
+            </form>
+        </>
+
     )
 }
