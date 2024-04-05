@@ -38,9 +38,14 @@ public class ApiV1ArticleController {
     }
 
     @PatchMapping("/{id}")
-    public void modifyArticle(@PathVariable(value = "id") Long id, @Valid @RequestBody Request.ModifyRequest modifyRequest) {
+    public Article modifyArticle(@PathVariable(value = "id") Long id, @Valid @RequestBody Request.ModifyRequest modifyRequest) {
         Article article = this.articleService.findById(id);
-        this.articleService.modify(article,modifyRequest.getTitle(),modifyRequest.getContent());
+        return this.articleService.modify(article,modifyRequest.getTitle(),modifyRequest.getContent());
+    }
+
+    @DeleteMapping("/{id}")
+    public void removeArticle(@PathVariable(value = "id") Long id) {
+        this.articleService.removeById(id);
     }
 
 

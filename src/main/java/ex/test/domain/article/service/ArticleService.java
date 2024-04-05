@@ -38,7 +38,7 @@ public class ArticleService {
         return article.get();
     }
 
-    public void modify(Article article, String title, String content) {
+    public Article modify(Article article, String title, String content) {
 
         Article modifyA = article.toBuilder()
                 .title(title)
@@ -46,5 +46,11 @@ public class ArticleService {
                 .build();
 
         this.articleRepository.save(modifyA);
+
+        return modifyA;
+    }
+
+    public void removeById(Long id) {
+        this.articleRepository.deleteById(id);
     }
 }
